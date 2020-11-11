@@ -1,13 +1,15 @@
 create database vms;
 use vms;
 
+//login table
 create table login(
 	username varchar(30),
 	password varchar(30)
 );
 insert into login values("root","root");
 select * from login;
-	
+
+//vehicle table
 create table vehicle(
 	id Integer auto_increment primary key,
 	name varchar(30),
