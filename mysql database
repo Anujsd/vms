@@ -1,0 +1,21 @@
+create database vms;
+use vms;
+
+create table login(
+	username varchar(30),
+	password varchar(30)
+);
+insert into login values("root","root");
+select * from login;
+	
+create table vehicle(
+	id Integer auto_increment primary key,
+	name varchar(30),
+	company varchar(30),
+	price varchar(30),
+	model varchar(30),
+	color varchar(30),
+	status varchar(30)
+);
+insert into vehicle values(default,"Taigo","TATA","5,34,000","2020","Orange","Ready To Sell");
+select * from vehicle;
