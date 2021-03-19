@@ -1,23 +1,51 @@
-create database vms;
-use vms;
+# Here 1Nf is satisfied as columns of a table are not holding multiple values
+# 2NF is also satisfied as non-prime attribute is not dependent on the proper subset of any candidate key of table.
+# 3NF is also satisfied as Transitive functional dependency of non-prime attribute on any super key should be remove 
+# BCNF is also satisfied as for every functional dependency X->Y, X is the super key of the table.
 
-//login table
-create table login(
-	username varchar(30),
-	password varchar(30)
-);
-insert into login values("root","root");
-select * from login;
-
-//vehicle table
+drop table vehicle;
 create table vehicle(
-	id Integer auto_increment primary key,
-	name varchar(30),
-	company varchar(30),
-	price varchar(30),
-	model varchar(30),
-	color varchar(30),
-	status varchar(30)
+	vname varchar(30) primary key,
+	vcompany varchar(30),
+	vprice varchar(30),
+	vmileage varchar(30),
+	vengine varchar(30),
+	vcount varchar(30)
 );
-insert into vehicle values(default,"Taigo","TATA","5,34,000","2020","Orange","Ready To Sell");
-select * from vehicle;
+insert into vehicle values("tiago","tata","470000","23 kmpl","1199 cc",5);
+insert into vehicle values("nexon","tata","699000","21 kmpl","1199 cc",7);
+insert into vehicle values("swift","maruti","519000","21 kmpl","1197 cc",5);
+insert into vehicle values("i20","hyundai","679000","25 kmpl","1493 cc",8);
+insert into vehicle values("sonet","kia","671000","24 kmpl","1493 cc",8);
+
+
+create table customer(
+	csrno Integer auto_increment primary key,
+	cname varchar(30),
+	caddress varchar(30),
+	cmbno varchar(30),
+	cemail varchar(30),
+	cvname varchar(30),
+	FOREIGN KEY(cvname) REFERENCES vehicle(vname)
+);
+insert into customer values(default,"Anuj dube","pune-411505","7934567890","anuj@viit.ac.in","sonet");
+insert into customer values(default,"raju shukla","pune-410505","9978595654","raju@gmail.com","tiago");
+insert into customer values(default,"sham singh","mumbai-510505","7789877889","sham@gmail.com","i20");
+insert into customer values(default,"ram kapoor","nashik-414605","9685745666","ram@gmail.com","nexon");
+insert into customer values(default,"Anuj dube","satara-414505","7845123690","anujdube@google.com","swift");
+
+
+
+
+
+create table sales(
+	sdate varchar(30) primary key,
+	sprice varchar(30),
+	scustNo Integer,
+	FOREIGN KEY(scustNo) REFERENCES customer(csrno)
+);
+insert into sales values("01/11/2020","470000",2);
+insert into sales values("11/11/2020","650000",3);
+insert into sales values("12/11/2020","500000",5);
+insert into sales values("15/11/2020","690000",4);
+insert into sales values("18/11/2020","671000",1);
