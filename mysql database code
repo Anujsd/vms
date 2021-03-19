@@ -3,7 +3,20 @@
 # 3NF is also satisfied as Transitive functional dependency of non-prime attribute on any super key should be remove 
 # BCNF is also satisfied as for every functional dependency X->Y, X is the super key of the table.
 
-drop table vehicle;
+create database vms;
+
+use vms;
+
+create table login{
+	username varchar(30),
+	password varchar(30)
+};
+insert into login values("admin", "admin");
+
+
+
+
+
 create table vehicle(
 	vname varchar(30) primary key,
 	vcompany varchar(30),
@@ -17,6 +30,9 @@ insert into vehicle values("nexon","tata","699000","21 kmpl","1199 cc",7);
 insert into vehicle values("swift","maruti","519000","21 kmpl","1197 cc",5);
 insert into vehicle values("i20","hyundai","679000","25 kmpl","1493 cc",8);
 insert into vehicle values("sonet","kia","671000","24 kmpl","1493 cc",8);
+
+
+
 
 
 create table customer(
